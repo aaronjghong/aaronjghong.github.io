@@ -93,15 +93,17 @@
 
             }
           }
-          var fp = setInterval(flipper, 100);
+          var fp = setInterval(flipper, 10);
           function flipper(){
             if (posX <= 0 || posX >= 600){
               flipX = -flipX;
               console.log("flipX");
+              logo.style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
             }
             if(posY >= 448 || posY <= 0){
               flipY = -flipY;
               console.log("flipY");
+              logo.style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
             }
           }
         }
