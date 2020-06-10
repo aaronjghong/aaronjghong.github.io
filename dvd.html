@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DVD Bounce</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="dvd.css">
+    <link rel="icon" href="icocircle.ico">
+    </head>
+  <body>
+    <header>
+      <h1>
+        Aaron Hong's
+      </h1>
+      <h2>
+        Personal Website
+      </h2>
+    </header>
+    <ul class = "navbar">
+      <li><a class = "navitem" href="contact.html">Contact</a></li>
+      <li><a class = "navitem" href="resume.html">Resume</a></li>
+      <li><a class = "navitem" href="projects.html">Projects/Releases</a></li>
+      <li><a class = "navitem" href="index.html">Home</a></li>
+    </ul>
+    <div class="bodysec">
+      <div class="topblock">
+        <h3>
+          DVD Bounce
+        </h3>
+      </div>
+      <div id="border" onclick = "clicked(event)">
+        <div id = "logo"><p id = "textLogo">DVD</p></div>
+        <div class = "arrow"></div>
+      </div>
+    </div>
+
+<!-- Script to make arrow rotate-->
+    <script>
+      document.querySelector('body').addEventListener('mousemove', arrow);
+      var rot;
+      var radian;
+      function arrow(){
+        var arrow = document.querySelectorAll('.arrow');
+        arrow.forEach(function(arrow){
+            var x = (arrow.getBoundingClientRect().left) + (arrow.clientWidth / 2);
+            var y = (arrow.getBoundingClientRect().top) + (arrow.clientHeight / 2);
+            radian = Math.atan2(event.pageX - x, event.pageY - y);
+            rot = (radian * (180/ Math.PI) * -1) + 0;
+            arrow.style.transform = "rotate("+ rot + "deg)"
+        })
+      }
+    </script>
+
+    <!-- Script to make DVD logo move-->
+    <script type="text/javascript">
+      var direction;
+      var hasBeenClicked = false;
+      var logo = document.getElementById("logo");
+      var border = document.getElementById("border");
+      var posX = 300;
+      var posY = 224;
+      function clicked(event){
+          if (hasBeenClicked == false){
+            var mx = event.clientX;
+            var my = event.clientY;
+            console.log(mx + " " + my);
+            var direction = Math.atan2(mx - posX, my - posY);
+            console.log(direction);
+            hasBeenClicked = true;
+            handler();
+          }
+        }
+      function handler(){
+        radUsed = radian;
+        var id = setInterval(move,10);
+        var flipX = 1;
+        var flipY = 1;
+        function move(){
+          if (posX == 600 && posY == 448 || posX == 600 && posY == 0 || posX == 0 && posY ==448 || posX == 0 && posY == 0){
+            clearInterval(id);
+          } else {
+              posX += Math.sin(radUsed) * 2*flipX;
+              posY += Math.cos(radUsed) * 2*flipY;
+              logo.style.top = posY + 'px';
+              logo.style.left = posX + 'px';
+
+            }
+          }
+          var fp = setInterval(flipper, 100);
+          function flipper(){
+            if (posX <= 0 || posX >= 600){
+              flipX = -flipX;
+              console.log("flipX");
+            }
+            if(posY >= 448 || posY <= 0){
+              flipY = -flipY;
+              console.log("flipY");
+            }
+          }
+        }
+    </script>
+  </body>
+</html>

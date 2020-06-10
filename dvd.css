@@ -1,0 +1,32 @@
+#border{
+  width: 640px;
+  height: 480px;
+  background: blue;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  color: red;
+  width: 40px;
+  height: 32px;
+  left: 300px;
+  top: 224px;
+}
+
+#textLogo {
+  font-family: 'roboto_condensedregular';
+}
+
+.arrow {
+  position: relative;
+  left: 300px;
+  top:230px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid orange;
+  opacity: 50%;
+}
