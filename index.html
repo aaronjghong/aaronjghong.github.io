@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="icocircle.ico">
+    </head>
+  <body>
+    <header>
+      <h1>
+        Aaron Hong's
+      </h1>
+      <h2>
+        Personal Website
+      </h2>
+    </header>
+    <ul class = "navbar">
+      <li><a class = "navitem" href="contact.html">Contact</a></li>
+      <li><a class = "navitem" href="resume.html">Resume</a></li>
+      <li><a class = "navitem" href="projects.html">Projects/Releases</a></li>
+      <li><a class = "navitem" href="index.html">Home</a></li>
+    </ul>
+    <div class = "top">
+      <section class = "zoom">
+        <video width=100% height=800px autoplay muted src="animation.m4v"></video>
+        <img src="Background.png" alt="" id = "layer1">
+        <img src="Background.png" alt="" id = "layer2">
+      </section>
+    </div>
+
+    <!-- parallax body -->
+    <div class="bodysec">
+      <ul id = "scene">
+        <li class = "layer" data-depth=".2"><img src="Dots\together.png" class = "test"></li>
+        <li class = "layer" data-depth=".4"><img src="Dots\together.png" class = "test2"></li>
+        <li class = "layer" data-depth=".6"><img src="Dots\together.png" class = "test3"></li>
+        <li class = "layer" data-depth=".8"><img src="Dots\together.png" class = "test4"></li>
+        <li class = "layer" data-depth=".1"><h3>Home</h3></li>
+        <li class = "layer" data-depth=".1"><h4 class = "gtext1">About Me</h4></li>
+        <li class = "layer" data-depth=".1"><p class = "gtext2">Hi! I'm Aaron.</p></li>
+        <li class = "layer" data-depth=".1"><p class = "gtext3">I'm a student attending the University of Waterloo for Computer Engineering.</p></li>
+        <li class = "layer" data-depth=".1"><p class = "gtext4">I enjoy partaking in various programming projects and musical endeavours.</p></li>
+        <li class = "layer" data-depth=".1"><h4 class = "gtext5">What is this website for?</h4></li>
+        <li class = "layer" data-depth=".1"><p class = "gtext6">This website will be used as a hub to display myself and my projects from here on out</p></li>
+        <li class = "layer" data-depth=".1"><p class = "gtext7">Both can be accessed from the navigation bar.</p></li>
+      </ul>
+    </div>
+
+
+<!-- Script to fade in the "scroll down" imgs --->
+    <script type = "text/javascript">
+      var layer1 = document.getElementById('layer1');
+      var layer2 = document.getElementById('layer2');
+      layer1.style.opacity = 0 + '%';
+      layer2.style.opacity = 0 + '%';
+      var pos = 0;
+      var id = setInterval(frame, 20);
+      function frame() {
+        if (pos == 100) {
+          clearInterval(id);
+        } else {
+            pos++;
+            layer1.style.opacity = pos + '%';
+            layer2.style.opacity = pos + '%'
+        }
+      }
+
+    </script>
+
+
+<!-- Script to add parallax scroll to the "scroll down" imgs --->
+    <script type = "text/javascript">
+      var layer1 = document.getElementById('layer1');
+      scroll = window.pageYOffset;
+      document.addEventListener('scroll',
+      function (e){
+        var offset = window.pageYOffset;
+        scroll = offset;
+        layer1.style.width = (10 - scroll/100) + '%';
+      //layer1.style.left = (15-scroll/15) + '%';
+        layer1.style.opacity = (100 - scroll/4) + '%';
+      });
+
+      var layer2 = document.getElementById('layer2');
+      scroll = window.pageYOffset;
+      document.addEventListener('scroll',
+      function (e){
+        var offset = window.pageYOffset;
+        scroll = offset;
+        layer2.style.width = (10 - scroll/100) + '%';
+        //layer2.style.right = (15-scroll/15) + '%';
+        layer2.style.opacity = (100 - scroll/4) + '%'
+      });
+    </script>
+
+  <!-- Script to add parallax on mouse move for background elements --->
+    <script src = "parallax.js" type = "text/javascript"></script>
+    <script type = "text/javascript">
+      var scene = document.getElementById('scene');
+      var parallax = new Parallax(scene);
+    </script>
+  </body>
+</html>
